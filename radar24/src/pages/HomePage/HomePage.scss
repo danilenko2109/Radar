@@ -1,0 +1,379 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+
+$primary-color: #1a1a2e;
+$secondary-color: #16213e;
+$accent-color: #0f3460;
+$highlight-color: #00b4d8;
+$text-color: #e6e6e6;
+
+
+$road-color: #333;
+$car-color: #e74c3c;
+$car-dark: #c0392b;
+$wheel-color: #222;
+$wheel-rim: #444;
+$window-color: rgba(173, 216, 230, 0.7);
+$headlight-color: #ffeb3b;
+
+
+$blue: #0039a6;
+$red: #d52b1e;
+$white: #ffffff;
+
+.home-page {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  color: $text-color;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+
+
+  .road-container {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    perspective: 300px;
+    z-index: 1;
+    filter: none;
+    backdrop-filter: none;
+
+    @media (max-width: 767px) {
+      bottom: 10%;
+      height: 80px;
+      perspective: 200px;
+    }
+  }
+
+  .road {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: $road-color;
+    transform: rotateX(20deg);
+    transform-origin: bottom;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+    filter: none;
+    backdrop-filter: none;
+
+    @media (max-width: 767px) {
+      height: 50px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: repeating-linear-gradient(
+        to right,
+        $white,
+        $white 30px,
+        transparent 30px,
+        transparent 60px
+      );
+      transform: translateY(-50%);
+      filter: none;
+
+      @media (max-width: 767px) {
+        height: 4px;
+        background: repeating-linear-gradient(
+          to right,
+          $white,
+          $white 20px,
+          transparent 20px,
+          transparent 40px
+        );
+      }
+    }
+  }
+
+ 
+  .car {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 180px;
+    height: 60px;
+    animation: drive 10s linear infinite;
+    transform-style: preserve-3d;
+    z-index: 2;
+    filter: none;
+    backdrop-filter: none;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    @media (max-width: 767px) {
+      width: 120px;
+      height: 40px;
+      bottom: 25px;
+    }
+
+    .car-top {
+      position: absolute;
+      top: 0;
+      left: 30px;
+      width: 120px;
+      height: 40px;
+      background: $car-color;
+      border-radius: 15px 15px 0 0;
+      box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1);
+      filter: none;
+
+      @media (max-width: 767px) {
+        left: 20px;
+        width: 80px;
+        height: 25px;
+        border-radius: 10px 10px 0 0;
+      }
+    }
+
+    .car-bottom {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 180px;
+      height: 30px;
+      background: $car-dark;
+      border-radius: 5px;
+      filter: none;
+
+      @media (max-width: 767px) {
+        top: 20px;
+        width: 120px;
+        height: 20px;
+      }
+    }
+
+    .window {
+      position: absolute;
+      top: 5px;
+      left: 40px;
+      width: 100px;
+      height: 25px;
+      background: $window-color;
+      border-radius: 8px;
+      border: 2px solid rgba(0,0,0,0.1);
+      filter: none;
+
+      @media (max-width: 767px) {
+        left: 25px;
+        width: 70px;
+        height: 15px;
+        top: 3px;
+      }
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: -5px;
+      width: 30px;
+      height: 30px;
+      background: $wheel-color;
+      border-radius: 50%;
+      border: 3px solid $wheel-rim;
+      animation: wheel-rotate 1s linear infinite;
+      filter: none;
+
+      @media (max-width: 767px) {
+        width: 20px;
+        height: 20px;
+        bottom: -3px;
+        border-width: 2px;
+      }
+
+      &.front-wheel {
+        left: 35px;
+
+        @media (max-width: 767px) {
+          left: 25px;
+        }
+      }
+
+      &.back-wheel {
+        right: 35px;
+
+        @media (max-width: 767px) {
+          right: 25px;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 12px;
+        height: 12px;
+        background: #555;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        filter: none;
+
+        @media (max-width: 767px) {
+          width: 8px;
+          height: 8px;
+        }
+      }
+    }
+
+    .headlight {
+      position: absolute;
+      right: -5px;
+      top: 20px;
+      width: 10px;
+      height: 8px;
+      background: $headlight-color;
+      border-radius: 50% 0 0 50%;
+      box-shadow: 0 0 15px $headlight-color;
+      filter: none;
+
+      @media (max-width: 767px) {
+        right: -3px;
+        top: 12px;
+        width: 6px;
+        height: 5px;
+        box-shadow: 0 0 8px $headlight-color;
+      }
+    }
+  }
+
+
+  .content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+   
+    backdrop-filter: none;
+
+    @media (max-width: 767px) {
+      padding: 1rem;
+    }
+
+    .russian-flag {
+      width: 300px;
+      height: 200px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      overflow: hidden;
+      animation: wave 8s infinite ease-in-out;
+      border: 1px solid rgba($highlight-color, 0.3);
+      filter: none;
+
+      @media (max-width: 767px) {
+        width: 200px;
+        height: 133px;
+        margin-bottom: 1.5rem;
+      }
+
+      .flag-stripe {
+        height: 33.33%;
+        width: 100%;
+        filter: none;
+
+        &.white { background-color: $white; }
+        &.blue { background-color: $blue; }
+        &.red { background-color: $red; }
+      }
+    }
+
+    .title {
+      font-size: 2.5rem;
+      color: $text-color;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      filter: none;
+
+      @media (max-width: 767px) {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .radar-text {
+        display: inline-block;
+        color: $highlight-color;
+        font-weight: 700;
+        animation: pulse 2s infinite;
+        filter: none;
+      }
+    }
+
+    .start-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, $accent-color, $highlight-color);
+      color: $white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba($highlight-color, 0.3);
+      border: 1px solid rgba($highlight-color, 0.5);
+      position: relative;
+      overflow: hidden;
+      filter: none;
+
+      @media (max-width: 767px) {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+      }
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba($highlight-color, 0.4);
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+  }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(2deg) translateY(-5px); }
+  50% { transform: rotate(0deg) translateY(0); }
+  75% { transform: rotate(-2deg) translateY(-5px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+@keyframes pulse {
+  0% { text-shadow: 0 0 5px rgba($highlight-color, 0.3); }
+  50% { text-shadow: 0 0 15px rgba($highlight-color, 0.6); }
+  100% { text-shadow: 0 0 5px rgba($highlight-color, 0.3); }
+}
+
+@keyframes drive {
+  0% { transform: translateX(-200px); }
+  100% { transform: translateX(calc(100vw + 200px)); }
+}
+
+@keyframes wheel-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
