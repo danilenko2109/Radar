@@ -1,5 +1,6 @@
 import React from 'react';
 import './HomePage.scss';
+import { NavLink } from 'react-router-dom';
 
 const HomePage = () => {
   return (
@@ -29,9 +30,9 @@ const HomePage = () => {
           Добро пожаловать в <span className="radar-text">RADAR24</span>
         </h1>
         
-        <a href="/radar" className="start-button">
+        <NavLink to="/radar" className="start-button">
           Начать
-        </a>
+        </NavLink>
       </div>
     </div>
   );

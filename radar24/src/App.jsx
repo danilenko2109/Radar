@@ -12,7 +12,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
-         <Route path='/radar' element={<RadarPage/>}/>
+         <Route path='radar' element={<RadarPage/>}/>
       </Routes>
       {/* <Navigator></Navigator> */}
     </>
