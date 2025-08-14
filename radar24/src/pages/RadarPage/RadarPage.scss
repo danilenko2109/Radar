@@ -1,5 +1,3 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 $primary-color: #1a1a2e;
@@ -12,7 +10,7 @@ $status-dot: #3a86ff;
 
 .radar-premium {
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  background: linear-gradient(135deg, darken($primary-color, 2%), lighten($secondary-color, 2%));
   color: $text-color;
   min-height: 100vh;
   width: 95vw;
@@ -25,12 +23,10 @@ $status-dot: #3a86ff;
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=1000') center/cover no-repeat;
-    opacity: 0.05;
+    opacity: 0.04;
+    filter: contrast(1.2) brightness(0.8);
     z-index: 0;
   }
 }
@@ -41,12 +37,12 @@ $status-dot: #3a86ff;
   align-items: center;
   padding: 1.5rem 2rem;
   position: relative;
-  // border-radius: 50px;
   z-index: 1;
-  background: rgba($primary-color, 0.8);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba($highlight-color, 0.2);
+  background: rgba($primary-color, 0.85);
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba($highlight-color, 0.25);
+  border-radius: 12px 12px 0 0;
 
   .logo-brand {
     display: flex;
@@ -57,49 +53,45 @@ $status-dot: #3a86ff;
       font-weight: 700;
       font-size: 1.8rem;
       letter-spacing: 1px;
-      background: linear-gradient(90deg, $highlight-color, lighten($highlight-color, 20%));
+      background: linear-gradient(90deg, $highlight-color, lighten($highlight-color, 18%));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 10px rgba($highlight-color, 0.3);
+      text-shadow: 0 0 12px rgba($highlight-color, 0.4);
 
       .logo-primary {
         font-weight: 800;
       }
-
-      
     }
 
     .status-dot {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       background-color: $status-dot;
       border-radius: 50%;
-      box-shadow: 0 0 10px $status-dot;
-      animation: pulse 2s infinite;
+      box-shadow: 0 0 12px $status-dot;
+      animation: pulse 2s infinite ease-in-out;
     }
   }
 
   .russian-flag {
     display: flex;
     flex-direction: column;
-    width: 30px;
-    height: 20px;
-    border-radius: 2px;
+    width: 34px;
+    height: 22px;
+    border-radius: 3px;
     overflow: hidden;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 
     .flag-stripe {
       flex: 1;
 
       &.white {
-        background-color: white;
+        background-color: #ffffff;
       }
-
       &.blue {
         background-color: #0039a6;
       }
-
       &.red {
         background-color: #d52b1e;
       }
@@ -116,12 +108,9 @@ $status-dot: #3a86ff;
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba($accent-color, 0.3), rgba($primary-color, 0.7));
-    border-radius: 16px;
+    inset: 0;
+    background: linear-gradient(135deg, rgba($accent-color, 0.25), rgba($primary-color, 0.7));
+    border-radius: 20px;
     margin: 1rem;
     z-index: -1;
   }
@@ -129,12 +118,9 @@ $status-dot: #3a86ff;
   &::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 1px solid rgba($highlight-color, 0.3);
-    border-radius: 16px;
+    inset: 0;
+    border: 1px solid rgba($highlight-color, 0.25);
+    border-radius: 20px;
     margin: 1rem;
     pointer-events: none;
     z-index: -1;
@@ -146,22 +132,27 @@ $status-dot: #3a86ff;
   height: 100%;
   min-height: 60vh;
   border: none;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
+  border-radius: 14px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.6);
+  }
 }
 
 .data-footer {
   display: flex;
   justify-content: space-around;
   padding: 1.5rem 2rem;
-  background: rgba($primary-color, 0.8);
-  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid rgba($highlight-color, 0.2);
+  background: rgba($primary-color, 0.85);
+  box-shadow: 0 -6px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba($highlight-color, 0.25);
   position: relative;
-  // bottom: 10px;
   z-index: 1;
 
   .data-item {
@@ -177,7 +168,7 @@ $status-dot: #3a86ff;
       transform: translateY(-50%);
       height: 40px;
       width: 1px;
-      background: rgba($highlight-color, 0.2);
+      background: rgba($highlight-color, 0.25);
     }
 
     .data-label {
@@ -197,28 +188,17 @@ $status-dot: #3a86ff;
 
       &.active {
         color: $status-active;
-        text-shadow: 0 0 8px rgba($status-active, 0.3);
+        text-shadow: 0 0 10px rgba($status-active, 0.4);
       }
     }
   }
 }
 
-
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.75; }
+  100% { transform: scale(1); opacity: 1; }
 }
-
 
 .decorative-corner {
   position: absolute;
@@ -226,40 +206,37 @@ $status-dot: #3a86ff;
   height: 100px;
   border: 2px solid rgba($highlight-color, 0.3);
   pointer-events: none;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: rgba($highlight-color, 0.6);
+  }
 
   &-tl {
-    top: 20px;
-    left: 20px;
+    top: 20px; left: 20px;
     border-right: none;
     border-bottom: none;
     border-radius: 16px 0 0 0;
   }
-
   &-tr {
-    top: 20px;
-    right: 20px;
+    top: 20px; right: 20px;
     border-left: none;
     border-bottom: none;
     border-radius: 0 16px 0 0;
   }
-
   &-bl {
-    bottom: 20px;
-    left: 20px;
+    bottom: 20px; left: 20px;
     border-right: none;
     border-top: none;
     border-radius: 0 0 0 16px;
   }
-
   &-br {
-    bottom: 20px;
-    right: 20px;
+    bottom: 20px; right: 20px;
     border-left: none;
     border-top: none;
     border-radius: 0 0 16px 0;
   }
 }
-
 
 @media (max-width: 768px) {
   .data-footer {
@@ -274,14 +251,12 @@ $status-dot: #3a86ff;
       }
     }
   }
-
   .map-container {
     padding: 1rem;
   }
 }
 
 .map-overlay-title {
-  // position: absolute;
   top: 2.5rem;
   left: 50%;
   transform: translateX(-50%);
@@ -291,10 +266,10 @@ $status-dot: #3a86ff;
   text-transform: uppercase;
   letter-spacing: 2px;
   z-index: 2;
-  background: rgba($primary-color, 0.7);
+  background: rgba($primary-color, 0.75);
   padding: 0.5rem 1.5rem;
   border-radius: 20px;
   border: 1px solid rgba($highlight-color, 0.3);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
 }
